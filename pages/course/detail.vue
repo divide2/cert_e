@@ -1,0 +1,88 @@
+<template>
+  <view>
+    <cu-custom is-back>
+      <block slot="content">课程</block>
+    </cu-custom>
+    <scroll-view scroll-y class="scrollPage">
+      <swiper class="screen-swiper round-dot}}" indicator-dots="true" circular="true" autoplay="true" interval="5000"
+              duration="500">
+        <swiper-item v-for="item in course.images" :key="item">
+          <image :src="item" mode="aspectFill"></image>
+        </swiper-item>
+      </swiper>
+      <view class="padding-sm bg-white">
+        <view class="padding-xs text-black text-bold text-xl">
+          <text>{{course.name}}</text>
+        </view>
+        <view class="padding-xs">
+          简介:{{course.description}}
+        </view>
+
+        <view class="flex justify-between padding">
+          <view class="text-bold text-red">￥{{course.price}}</view>
+          <view class="text-bold">{{course.certificateId?course.certificateName: '无证书'}}</view>
+          <view class="text-bold">{{course.createUserName}}</view>
+        </view>
+        <view>
+          <view class="flex align-center padding">
+            <text class="cuIcon-timefill text-orange margin-right-sm"></text>
+            <text class="">{{course.startTime + '~' + course.endTime}}</text>
+          </view>
+          <view class="flex align-center padding">
+            <text class="cuIcon-locationfill text-orange margin-right-sm "></text>
+            <text>{{course.address + ' ' + course.addressDetail}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 商品详情 -->
+      <view class="padding-sm margin-top-sm bg-white">
+        <!--        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>-->
+        {{course.details}}
+      </view>
+    </scroll-view>
+    <view class="cu-bar bg-white tabbar border shop foot">
+      <button class="action" open-type="share">
+        <view class="cuIcon-share text-green"></view>
+        分享
+      </button>
+      <view class="action text-blue" @tap="toCourseUser">
+        <view class="cuIcon-peoplelist"></view>
+        报名人数
+      </view>
+      <view class="bg-orange submit" @tap="edit">编辑</view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import api from '@/api/api'
+
+  export default {
+    name: "courseDetail",
+    data() {
+      return {
+        course: {}
+      }
+    },
+    onLoad(options) {
+      this.id = options.id
+      api.get(`/v1/org/courses/${options.id}`).then(data => {
+        this.course = data
+      })
+    },
+    methods: {
+      edit() {
+        uni.navigateTo({
+          url: '/pages/course/create?type=update&id=' + this.id
+        })
+      },
+      toCourseUser() {
+
+      }
+    }
+  }
+</script>
+
+<style scoped>
+
+</style>

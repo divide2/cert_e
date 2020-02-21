@@ -77,14 +77,10 @@
       chooseAddress(item) {
         let pages = getCurrentPages()
         let prevPage = pages[pages.length - 2]
-        console.log(prevPage)
-        prevPage.setData({
-          ['course.addressName']: item.address,
-          ['course.addressId']: item.id
-        }, function () {
-          uni.navigateBack({
-            delta: 1
-          })
+        prevPage.$vm.course.address = item.address
+        prevPage.$vm.course.addressId = item.id
+        uni.navigateBack({
+          delta: 1
         })
       }
     }

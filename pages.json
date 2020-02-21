@@ -45,6 +45,14 @@
     {
       "path": "pages/course/certification/create",
       "style": {}
+    },
+    {
+      "path": "pages/course/list",
+      "style": {}
+    },
+    {
+      "path": "pages/course/detail",
+      "style": {}
     }
   ],
   "globalStyle": {
