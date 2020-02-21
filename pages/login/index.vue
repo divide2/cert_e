@@ -51,7 +51,7 @@
       this.$refs.form.setRules(this.rules)
       if (uni.getStorageSync('userInfo')) {
         uni.redirectTo({
-          url: '/pages/course/index'
+          url: '/pages/index/index'
         })
       }
     },

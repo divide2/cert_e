@@ -60,11 +60,11 @@
           sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
           sourceType: ['album'], //从相册选择
           success: (res) => {
-            wx.uploadFile({
+            uni.uploadFile({
               url: `${app.globalData.baseUrl}/v1/upload/image`,
               filePath: res.tempFilePaths[0],
               header: {
-                Authorization: 'Bearer ' + wx.getStorageSync('accessToken')
+                Authorization: 'Bearer ' + uni.getStorageSync('accessToken')
               },
               name: 'file',
               success(res) {
