@@ -3,13 +3,13 @@
     <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">课程</block>
     </cu-custom>
-    <scroll-view scroll-x class="bg-white nav text-center fixed">
-      <view :class="'cu-item '+(index===tabCur?'text-blue cur':'')" v-for="(item,index) in 3" :key="index"
-            @tap="tabSelect(index)">
-        Tab{{index}}
+    <scroll-view scroll-x class="bg-white nav text-center fixed" :style="'top:'+ customBar + 'px'">
+      <view :class="'cu-item '+(index===tabCur?'text-blue cur':'')" v-for="(item,index) in statuses" :key="index"
+            @tap="tabSelect(item,index)">
+        {{item.label}}
       </view>
     </scroll-view>
-    <view class="cu-card article">
+    <view class="cu-card article" :style="'margin-top: 49px'">
       <view class="cu-item shadow" v-for="item in courses" :key="item.id" @tap="toDetail(item.id)">
         <view class="title">
           <view class="text-cut">{{item.name}}</view>
@@ -42,8 +42,10 @@
       return {
         courses: [],
         last: false,
+        customBar: this.CustomBar,
         query: {
-          page: 0
+          page: 0,
+          status: 'PUBLISHED'
         },
         tabCur: 0,
         statuses: [
@@ -52,12 +54,16 @@
             value: 'PUBLISHED'
           },
           {
+            label: '已满员',
+            value: 'FULL'
+          },
+          {
             label: '已下架',
-            value: ''
+            value: 'SHELVED'
           },
           {
             label: '草稿箱',
-            value: ''
+            value: 'DRAFT'
           }
         ]
       }
@@ -72,8 +78,11 @@
       toDetail(id) {
         uni.navigateTo({url: '/pages/course/detail?id=' + id})
       },
-      tabSelect(index) {
+      tabSelect(item,index) {
         this.tabCur = index
+        this.query.status = item.value
+        this.courses = []
+        this.getCourse()
       }
     },
     onLoad() {

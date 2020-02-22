@@ -53,6 +53,10 @@
     {
       "path": "pages/course/detail",
       "style": {}
+    },
+    {
+      "path": "pages/course/users",
+      "style": {}
     }
   ],
   "globalStyle": {

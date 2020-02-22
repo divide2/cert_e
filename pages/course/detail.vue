@@ -90,7 +90,9 @@
         })
       },
       toCourseUser() {
-
+        uni.navigateTo({
+          url: '/pages/course/users?id=' + this.id
+        })
       }
     }
   }

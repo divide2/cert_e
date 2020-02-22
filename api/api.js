@@ -10,14 +10,13 @@ const request = (url, options) => {
         Authorization: 'Bearer ' + uni.getStorageSync('accessToken')
       },
       success(req) {
-        console.log(req)
         if (req.statusCode >= 200 && req.statusCode < 300) {
           resolve(req.data)
         } else if (req.statusCode === 403) {
           //token过期需重新登录
           uni.removeStorageSync('userInfo')
           uni.redirectTo({
-            url: '/pages/login/login'
+            url: '/pages/login/index'
           })
           reject(req)
         } else {
@@ -25,7 +24,6 @@ const request = (url, options) => {
         }
       },
       fail(error) {
-        console.error(error)
         if (error.statusCode === 403) {
           //token过期需重新登录
           uni.removeStorageSync('userInfo')
