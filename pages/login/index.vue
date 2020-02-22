@@ -1,6 +1,6 @@
 <template>
   <view class="padding">
-    <cu-custom>
+    <cu-custom bg-color="bg-blue">
       <block slot="content">登录</block>
     </cu-custom>
     <v-form :model="info" ref="form">

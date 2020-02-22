@@ -1,6 +1,6 @@
 <template>
   <view>
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">证书</block>
     </cu-custom>
     <scroll-view scroll-y class="scrollPage">
@@ -43,11 +43,15 @@
     name: "certification",
     data() {
       return {
+        fromPage: 'courseCreate',
         list: []
       }
     },
-    onLoad() {
+    onLoad(option) {
       this.getCertificates()
+      if (option.fromPage === 'course') {
+        this.fromPage = option.fromPage
+      }
     },
     methods: {
       toAddCer() {
@@ -79,14 +83,17 @@
         })
       },
       chooseCer(item) {
-        let pages = getCurrentPages()
-        let prevPage = pages[pages.length - 2]
-        console.log(prevPage)
-        prevPage.$vm.course.certificateName = item.name
-        prevPage.$vm.course.certificateId =  item.id
-        uni.navigateBack({
-          delta: 1
-        })
+        if (this.fromPage === 'courseCreate'){
+          let pages = getCurrentPages()
+          let prevPage = pages[pages.length - 2]
+          console.log(prevPage)
+          prevPage.$vm.course.certificateName = item.name
+          prevPage.$vm.course.certificateId =  item.id
+          uni.navigateBack({
+            delta: 1
+          })
+        }
+
         /*prevPage.setData({
           ['course.certificateName']: item.name,
           ['course.certificateId']: item.id

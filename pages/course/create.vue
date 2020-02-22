@@ -1,6 +1,6 @@
 <template>
   <view>
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">发布课程</block>
     </cu-custom>
     <form ref="form">

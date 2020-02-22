@@ -1,8 +1,14 @@
 <template>
   <view>
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">课程</block>
     </cu-custom>
+    <scroll-view scroll-x class="bg-white nav text-center fixed">
+      <view :class="'cu-item '+(index===tabCur?'text-blue cur':'')" v-for="(item,index) in 3" :key="index"
+            @tap="tabSelect(index)">
+        Tab{{index}}
+      </view>
+    </scroll-view>
     <view class="cu-card article">
       <view class="cu-item shadow" v-for="item in courses" :key="item.id" @tap="toDetail(item.id)">
         <view class="title">
@@ -14,7 +20,7 @@
             <view class="text-content">简介:{{item.description}}</view>
             <view>
               <view class="cu-tag bg-red light sm round">{{item.certificateName}}</view>
-              <view class="cu-tag bg-green light sm round">{{item.certificateLicensor}}</view>
+              <view class="cu-tag bg-blue light sm round">{{item.certificateLicensor}}</view>
             </view>
           </view>
         </view>
@@ -39,6 +45,21 @@
         query: {
           page: 0
         },
+        tabCur: 0,
+        statuses: [
+          {
+            label: '已发布',
+            value: 'PUBLISHED'
+          },
+          {
+            label: '已下架',
+            value: ''
+          },
+          {
+            label: '草稿箱',
+            value: ''
+          }
+        ]
       }
     },
     methods: {
@@ -50,6 +71,9 @@
       },
       toDetail(id) {
         uni.navigateTo({url: '/pages/course/detail?id=' + id})
+      },
+      tabSelect(index) {
+        this.tabCur = index
       }
     },
     onLoad() {

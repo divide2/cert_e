@@ -1,6 +1,6 @@
 <template>
   <view>
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">课程</block>
     </cu-custom>
     <scroll-view scroll-y class="scrollPage">
@@ -61,7 +61,20 @@
     name: "courseDetail",
     data() {
       return {
-        course: {}
+        course: {
+          images: [],
+          name: '',
+          description: '',
+          price: '',
+          certificateId: '',
+          certificateName: '',
+          createUserName: '',
+          startTime: '',
+          endTime: '',
+          address: '',
+          addressDetail: '',
+          details: ''
+        }
       }
     },
     onLoad(options) {

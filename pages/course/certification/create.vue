@@ -1,6 +1,6 @@
 <template>
   <form @submit="confirm" ref="form">
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">证书</block>
     </cu-custom>
     <view class="cu-form-group margin-top">

@@ -1,6 +1,6 @@
 <template>
   <view>
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">地址选择</block>
     </cu-custom>
     <scroll-view scroll-y class="scrollPage">
@@ -38,11 +38,16 @@
     name: "address",
     data() {
       return {
+        // 来自哪个页面 默认从添加课程那里来
+        fromPage: 'courseCreate',
         list: []
       }
     },
-    onLoad() {
-      this.getData()
+    onLoad(option) {
+      if (option.fromPage === 'course') {
+        this.fromPage = option.fromPage
+      }
+      this.getData();
     },
     methods: {
       toAddAddress() {
@@ -75,13 +80,17 @@
 
       },
       chooseAddress(item) {
-        let pages = getCurrentPages()
-        let prevPage = pages[pages.length - 2]
-        prevPage.$vm.course.address = item.address
-        prevPage.$vm.course.addressId = item.id
-        uni.navigateBack({
-          delta: 1
-        })
+        if (this.fromPage === 'courseCreate') {
+          let pages = getCurrentPages();
+          let prevPage = pages[pages.length - 2]
+          prevPage.$vm.course.address = item.address
+          prevPage.$vm.course.addressId = item.id
+          uni.navigateBack({
+            delta: 1
+          })
+        } else if (this.fromPage === 'course') {
+          //do nothing
+        }
       }
     }
   }

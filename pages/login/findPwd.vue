@@ -1,6 +1,6 @@
 <template>
   <view class="padding">
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">找回密码</block>
     </cu-custom>
     <v-form :model="info" ref="form">

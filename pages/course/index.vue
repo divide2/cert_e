@@ -1,6 +1,6 @@
 <template>
   <view>
-    <cu-custom>
+    <cu-custom bg-color="bg-blue">
       <block slot="content">课程</block>
     </cu-custom>
     <view class="cu-list grid col-3 no-border'">
@@ -39,13 +39,16 @@
             icon: 'location',
             color: 'yellow',
             badge: 0,
-            name: '地址'
+            name: '地址',
+            url: '/pages/course/address/index?fromPage=course'
           }, {
             icon: 'medal',
             color: 'olive',
             badge: 0,
-            name: '证书'
-          }, {
+            name: '证书',
+            url: '/pages/course/certification/index?fromPage=course'
+          },
+         /* {
             icon: 'questionfill',
             color: 'mauve',
             badge: 0,
@@ -55,8 +58,10 @@
             color: 'purple',
             badge: 0,
             name: '反馈'
-          }],
+          }*/],
         gridCol: 3,
+
+
       }
     },
     methods: {

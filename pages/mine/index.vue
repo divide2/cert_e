@@ -1,6 +1,6 @@
 <template>
   <view>
-    <cu-custom>
+    <cu-custom bg-color="bg-blue">
       <block slot="content">我</block>
     </cu-custom>
     <scroll-view scroll-y class="scrollPage">

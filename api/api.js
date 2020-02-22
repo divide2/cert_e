@@ -1,7 +1,7 @@
 const app = getApp()
 const request = (url, options) => {
   return new Promise((resolve, reject) => {
-    let baseUrl = app &&app.globalData&&app.globalData.baseUrl ? app.globalData.baseUrl : 'http://120.77.153.225:8080'
+    let baseUrl = app && app.globalData && app.globalData.baseUrl ? app.globalData.baseUrl : 'http://120.77.153.225:8080'
     uni.request({
       url: `${baseUrl}${url}`,
       method: options.method,
@@ -13,21 +13,27 @@ const request = (url, options) => {
         console.log(req)
         if (req.statusCode >= 200 && req.statusCode < 300) {
           resolve(req.data)
-        } else if (req.statusCode===403) {
+        } else if (req.statusCode === 403) {
           //token过期需重新登录
           uni.removeStorageSync('userInfo')
           uni.redirectTo({
             url: '/pages/login/login'
           })
           reject(req)
-        } else{
+        } else {
           reject(req)
         }
       },
       fail(error) {
+        console.error(error)
+        if (error.statusCode === 403) {
+          //token过期需重新登录
+          uni.removeStorageSync('userInfo')
+          uni.redirectTo({
+            url: '/pages/login/login'
+          })
+        }
         reject(error)
-       // todo 报错信息
-       console.error(error)
       }
     })
   })

@@ -1,6 +1,6 @@
 <template>
   <view class="padding">
-    <cu-custom is-back>
+    <cu-custom bg-color="bg-blue" is-back>
       <block slot="content">修改信息</block>
     </cu-custom>
     <v-form :model="userInfo" ref="form">
