@@ -54,16 +54,12 @@
             value: 'PUBLISHED'
           },
           {
-            label: '已满员',
-            value: 'FULL'
-          },
-          {
-            label: '已下架',
-            value: 'SHELVED'
+            label: '已完成',
+            value: 'FINISHED'
           },
           {
             label: '草稿箱',
-            value: 'DRAFT'
+            value: 'DRAFT,AUDITING'
           }
         ]
       }
@@ -82,6 +78,7 @@
         this.tabCur = index
         this.query.status = item.value
         this.courses = []
+        this.query.page = 0
         this.getCourse()
       }
     },

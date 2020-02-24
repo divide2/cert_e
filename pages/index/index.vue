@@ -27,6 +27,11 @@
 				PageCur: 'course'
 			}
 		},
+		onLoad(option) {
+			if (option.pageCur) {
+				this.PageCur = option.pageCur
+			}
+		},
 		methods: {
 			NavChange: function(e) {
 				this.PageCur = e.currentTarget.dataset.cur

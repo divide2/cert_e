@@ -41,15 +41,16 @@
       </view>
     </scroll-view>
     <view class="cu-bar bg-white tabbar border shop foot">
-      <button class="action" open-type="share">
+      <button class="action" open-type="share" v-if="course.status!=='DRAFT'">
         <view class="cuIcon-share text-green"></view>
         分享
       </button>
-      <view class="action text-blue" @tap="toCourseUser">
+      <view class="action text-blue" @tap="toCourseUser" v-if="course.status!=='DRAFT'">
         <view class="cuIcon-peoplelist"></view>
-        报名人数
+        报名{{course.enrolment}}人
       </view>
-      <view class="bg-orange submit" @tap="edit">编辑</view>
+      <view class="bg-orange submit" v-if="course.status==='DRAFT'" @tap="edit">编辑</view>
+      <view class="bg-orange submit" v-if="course.status==='PUBLISHED'" @tap="finish">结束报名</view>
     </view>
   </view>
 </template>
@@ -73,20 +74,40 @@
           endTime: '',
           address: '',
           addressDetail: '',
-          details: ''
+          details: '',
+          enrolment: 0
         }
       }
     },
     onLoad(options) {
       this.id = options.id
-      api.get(`/v1/org/courses/${options.id}`).then(data => {
-        this.course = data
-      })
+      this.getCourse()
     },
+
     methods: {
+      getCourse() {
+        api.get(`/v1/org/courses/${this.id}`).then(data => {
+          this.course = data
+        })
+      },
       edit() {
         uni.navigateTo({
           url: '/pages/course/create?type=update&id=' + this.id
+        })
+      },
+      finish() {
+        uni.showModal({
+          title: '结束报名',
+          content: '确认要结束么？',
+          success: res => {
+            if (res.confirm) {
+              api.put(`/v1/org/courses/${this.id}/finish`).then(data => {
+                uni.navigateBack({
+                  delta: 1
+                })
+              })
+            }
+          }
         })
       },
       toCourseUser() {

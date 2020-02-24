@@ -12,6 +12,10 @@
         <view class="title">培训价格</view>
         <input placeholder="必填" name="price" type="number" v-model="course.price"/>
       </view>
+      <view class="cu-form-group">
+        <view class="title">招收人数</view>
+        <input placeholder="必填" name="capacity" type="number" v-model="course.capacity"/>
+      </view>
       <view class="cu-form-group margin-top" @tap="chooseAddress">
         <view class="title">地址选择</view>
         <input placeholder="请选择地址" :value="course.address"/>
@@ -127,6 +131,7 @@
           images: [], // 图片
           details: '', // 图文描述
           professionId: '', // 行业id
+          capacity: 0,
           professionName: '' // 行业名字
         },
         rules: {
@@ -136,6 +141,9 @@
           price: [
             {required: true, message: '价格不能为空'},
             {pattern: /(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/, message: '请输入正确的价格'}],
+          capacity: [
+            {required: true, message: '招收人数不能为空'},
+            {pattern: /(^[1-9]\d*$)/, message: "招收人数必须是数字"}],
           address: [
             {required: true, message: '地址必选'}],
           addressId: [
