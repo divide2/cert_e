@@ -55,7 +55,7 @@
     },
     methods: {
       toAddCer() {
-        uni.navigateTo({
+        uni.redirectTo({
           url: '/pages/course/certification/create?type=add',
         })
       },
@@ -65,7 +65,7 @@
         })
       },
       toUpdateCer(id) {
-        uni.navigateTo({
+        uni.redirectTo({
           url: `/pages/course/certification/create?type=update&id=${id}`
         })
       },
@@ -85,6 +85,7 @@
       chooseCer(item) {
         if (this.fromPage === 'courseCreate'){
           let pages = getCurrentPages()
+          debugger
           let prevPage = pages[pages.length - 2]
           console.log(prevPage)
           prevPage.$vm.course.certificateName = item.name

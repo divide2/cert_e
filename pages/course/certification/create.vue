@@ -146,7 +146,7 @@
         })
       },
       updateCer(data) {
-        api.put(`/v1/org/certificates/${this.data.id}`, data).then(data => {
+        api.put(`/v1/org/certificates/${this.id}`, data).then(data => {
           wx.redirectTo({url: '/pages/course/certification/index'})
         })
       }
