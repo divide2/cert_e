@@ -54,7 +54,6 @@
         this.id = option.id
         this.getDetail(option.id)
       }
-      this.$refs.form.setRules(this.rules)
     },
     data() {
       return {

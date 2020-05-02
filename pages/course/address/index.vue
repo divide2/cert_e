@@ -51,7 +51,7 @@
     },
     methods: {
       toAddAddress() {
-        uni.navigateTo({
+        uni.redirectTo({
           url: '/pages/course/address/create?type=add',
         })
       },
@@ -61,7 +61,7 @@
         })
       },
       toUpdateAddress(id) {
-        uni.navigateTo({
+        uni.redirectTo({
           url: `/pages/course/address/create?type=update&id=${id}`,
         })
       },

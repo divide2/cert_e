@@ -1,7 +1,7 @@
 const app = getApp()
 const request = (url, options) => {
   return new Promise((resolve, reject) => {
-    let baseUrl = app && app.globalData && app.globalData.baseUrl ? app.globalData.baseUrl : 'http://120.77.153.225:8080'
+    let baseUrl = app && app.globalData && app.globalData.baseUrl
     uni.request({
       url: `${baseUrl}${url}`,
       method: options.method,

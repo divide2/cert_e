@@ -2,7 +2,8 @@
 	import Vue from 'vue'
 	export default {
     globalData: {
-      baseUrl : 'http://120.77.153.225:8080'
+      // baseUrl : 'http://120.77.153.225:8080'
+	  baseUrl: 'https://www.zhongxingfuwu.com'
     },
 		onLaunch: function() {
 			uni.getSystemInfo({

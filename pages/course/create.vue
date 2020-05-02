@@ -213,13 +213,15 @@
           sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
           sourceType: ['album'], //从相册选择
           success: (res) => {
-            uni.uploadFile({
-              url: `${app.globalData.baseUrl}/v1/upload/image`,
-              filePath: res.tempFilePaths[0],
-              name: 'file',
-              success(res) {
-                that.course.images.push(res.data)
-              }
+            res.tempFilePaths.forEach(path => {
+              uni.uploadFile({
+                url: `${app.globalData.baseUrl}/v1/upload/image`,
+                filePath: path,
+                name: 'file',
+                success(res) {
+                  that.course.images.push(res.data)
+                }
+              })
             })
           }
         });

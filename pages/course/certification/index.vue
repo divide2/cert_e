@@ -85,24 +85,13 @@
       chooseCer(item) {
         if (this.fromPage === 'courseCreate'){
           let pages = getCurrentPages()
-          debugger
           let prevPage = pages[pages.length - 2]
-          console.log(prevPage)
           prevPage.$vm.course.certificateName = item.name
           prevPage.$vm.course.certificateId =  item.id
           uni.navigateBack({
             delta: 1
           })
         }
-
-        /*prevPage.setData({
-          ['course.certificateName']: item.name,
-          ['course.certificateId']: item.id
-        }, function () {
-          uni.navigateBack({
-            delta: 1
-          })
-        })*/
       }
     }
   }
