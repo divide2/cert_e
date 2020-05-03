@@ -3,7 +3,8 @@
 	export default {
     globalData: {
       // baseUrl : 'http://120.77.153.225:8080'
-	  baseUrl: 'https://www.zhongxingfuwu.com'
+	  // baseUrl: 'https://www.zhongxingfuwu.com'
+	  baseUrl: 'http://localhost'
     },
 		onLaunch: function() {
 			uni.getSystemInfo({

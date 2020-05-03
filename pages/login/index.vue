@@ -61,7 +61,7 @@
           if (res) {
             api.post('/v1/login/org', this.info).then(res => {
               uni.setStorageSync('accessToken', res.accessToken)
-              api.get('/v1/user').then(data => {
+              api.get('/v1/org').then(data => {
                 uni.setStorageSync('userInfo', data)
                 //登录成功后跳转
                 uni.showToast({

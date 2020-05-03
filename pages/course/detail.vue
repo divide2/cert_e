@@ -21,7 +21,7 @@
         <view class="flex justify-between padding">
           <view class="text-bold text-red">￥{{course.price}}</view>
           <view class="text-bold">{{course.certificateId?course.certificateName: '无证书'}}</view>
-          <view class="text-bold">{{course.createUserName}}</view>
+          <view class="text-bold">{{course.orgName}}</view>
         </view>
         <view>
           <view class="flex align-center padding">
@@ -69,7 +69,8 @@
           price: '',
           certificateId: '',
           certificateName: '',
-          createUserName: '',
+          orgName: '',
+          orgId: '',
           startTime: '',
           endTime: '',
           address: '',

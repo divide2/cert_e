@@ -17,9 +17,9 @@
                     </view>
                     <view class="base-info margin-left">
                       <view>
-                        <text class="text-bold">{{userInfo.username}}</text>
+                        <text class="text-bold">{{userInfo.name}}</text>
                       </view>
-                      <text>{{userInfo.username}}</text>
+                      <text>{{userInfo.name}}</text>
                     </view>
                   </view>
                   <view class="flex margin-top">

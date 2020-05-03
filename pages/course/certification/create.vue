@@ -46,6 +46,7 @@
   import utils from "../../../components/form/utils";
 
   const app = getApp()
+
   export default {
     name: "certificationCreate",
     onLoad(option) {
