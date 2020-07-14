@@ -23,9 +23,9 @@
                     </view>
                   </view>
                   <view class="flex margin-top">
-                    <view class="margin-left">
+                    <view class="margin-left" @tap.stop="toFans">
                       <text class="margin-sm">粉丝</text>
-                      <text>12</text>
+                      <text>{{userInfo.fans}}</text>
                     </view>
                   </view>
                 </view>
@@ -71,6 +71,8 @@
 </template>
 
 <script>
+  import api from '@/api/api'
+
   export default {
     name: "mine",
     data() {
@@ -78,9 +80,15 @@
         userInfo: uni.getStorageSync('userInfo')
       }
     },
+    mounted() {
+      api.get('/v1/org').then(data => {
+        this.userInfo = data
+      })
+    },
     methods: {
       logout() {
         uni.removeStorageSync('userInfo')
+        uni.removeStorageSync('accessToken')
         uni.redirectTo({
           url: '/pages/login/index'
         })
@@ -89,6 +97,9 @@
         uni.navigateTo({
           url: '/pages/mine/editSelf'
         })
+      },
+      toFans() {
+        uni.navigateTo({url: '/pages/mine/fans'})
       }
     }
   }

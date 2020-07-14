@@ -25,6 +25,10 @@
       "path": "pages/mine/editSelf",
       "style": {}
     },
+    {
+      "path": "pages/mine/fans",
+      "style": {}
+    },
     /*course */
     {
       "path": "pages/course/create",
