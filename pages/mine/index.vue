@@ -44,17 +44,18 @@
       </view>
       <view>
         <view class="cu-list menu margin-top">
-          <view class="cu-item arrow">
+          <!-- <view class="cu-item arrow">
             <view class="content">
               <text class="cuIcon-goodsfill text-green"></text>
               <text class="text-grey">帮助和反馈</text>
             </view>
-          </view>
+          </view> -->
           <view class="cu-item arrow">
             <view class="content">
               <text class="cuIcon-goodsfill text-green"></text>
               <text class="text-grey">联系客服</text>
             </view>
+			<button open-type='contact' session-from='' :plain="true" class="contact-button">联系客服</button>
           </view>
         </view>
         <view class="cu-list menu margin-top" @tap="logout">
@@ -106,5 +107,9 @@
 </script>
 
 <style scoped>
-
+	.contact-button{
+		position: absolute;
+		width: 100%;
+		opacity: 0;
+	}
 </style>

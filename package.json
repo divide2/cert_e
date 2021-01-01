@@ -1,0 +1,22 @@
+{
+  "name": "cert_e",
+  "version": "1.0.0",
+  "description": "<p style=\"text-align: center;\"><img src=\"https://image.weilanwl.com/uni/UniAppReadme.jpg\" alt=\"ColorUI简介\"></img></p>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divide2/cert_e.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divide2/cert_e/issues"
+  },
+  "homepage": "https://github.com/divide2/cert_e#readme",
+  "dependencies": {
+    "async-validator": "^3.5.1"
+  }
+}

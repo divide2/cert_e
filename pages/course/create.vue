@@ -146,8 +146,8 @@
             {pattern: /(^[1-9]\d*$)/, message: "招收人数必须是数字"}],
           address: [
             {required: true, message: '地址必选'}],
-          addressId: [
-            {required: true, message: '地址必选'}],
+          // addressId: [
+          //   {required: , message: '地址必选'}],
           startTime: [
             {required: true, message: '开课时间必选'}],
           endTime: [
@@ -227,9 +227,16 @@
         });
       },
       chooseAddress() {
-        uni.navigateTo({
-          url: '/pages/course/address/index'
-        })
+        // uni.navigateTo({
+        //   url: '/pages/course/address/index'
+        // })
+		let that = this
+		uni.chooseAddress({
+				  success(res) {
+					  that.course.address = res.provinceName + res.cityName + res.countyName + res.detailInfo
+				      console.log(that.course)
+				  }
+		})
       },
       save() {
         utils.validate(this.course, this.rules, (res, errors) => {

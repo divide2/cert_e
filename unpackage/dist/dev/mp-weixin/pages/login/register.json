@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-form": "/components/form/VForm",
+    "v-form-item": "/components/form/VFormItem"
+  }
+}

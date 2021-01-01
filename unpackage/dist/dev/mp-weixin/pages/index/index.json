@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "course": "/pages/course/index",
+    "mine": "/pages/mine/index"
+  }
+}
