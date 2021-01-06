@@ -20,6 +20,7 @@ const request = (url, options) => {
           })
           reject(req)
         } else {
+		  uni.showToast({title: req.data.message, icon: 'none'})
           reject(req)
         }
       },

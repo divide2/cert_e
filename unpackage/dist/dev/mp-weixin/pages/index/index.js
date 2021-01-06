@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Mine = function Mine() {Promise.all(/*! require.ensure | pages/mine/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/mine/index")]).then((function () {return resolve(__webpack_require__(/*! ../mine/index */ 125));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Course = function Course() {__webpack_require__.e(/*! require.ensure | pages/course/index */ "pages/course/index").then((function () {return resolve(__webpack_require__(/*! ../course/index */ 130));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Mine = function Mine() {Promise.all(/*! require.ensure | pages/mine/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/mine/index")]).then((function () {return resolve(__webpack_require__(/*! ../mine/index */ 127));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Course = function Course() {__webpack_require__.e(/*! require.ensure | pages/course/index */ "pages/course/index").then((function () {return resolve(__webpack_require__(/*! ../course/index */ 134));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

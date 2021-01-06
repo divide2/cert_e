@@ -18,7 +18,8 @@
       </view>
       <view class="cu-form-group margin-top" @tap="chooseAddress">
         <view class="title">地址选择</view>
-        <input placeholder="请选择地址" :value="course.address"/>
+		<input placeholder="必选" v-model="course.address" disabled/>	
+		<text class="cuIcon-right"></text>
       </view>
       <view class="cu-form-group align-start margin-top">
         <view class="title">课程简介</view>
@@ -96,7 +97,8 @@
         </view>
       </view>
       <view class="cu-bar btn-group margin-top margin-bottom">
-        <button class="cu-btn bg-green shadow-blur round lg" @tap="save">保存</button>
+        <button class="cu-btn bg-green shadow-blur round lg" @tap="save('PUBLISHED')">立即发布</button>
+        <button class="cu-btn bg-green shadow-blur round lg" @tap="save('DRAFT')">保存草稿</button>
       </view>
     </form>
   </view>
@@ -122,7 +124,7 @@
           price: null, // 价格
           address: '', // 地址名字
           addressId: '', // 地址id
-          description: '无', // 课程描述
+          description: '', // 课程描述
           startTime: '', // 开始时间
           endTime: '', // 结束时间
           certificateId: '', // 证书id
@@ -132,7 +134,8 @@
           details: '', // 图文描述
           professionId: '', // 行业id
           capacity: 0,
-          professionName: '' // 行业名字
+          professionName: '', // 行业名字
+		  status: '' //状态 PUBLISHED | DRAFT | FINISHED
         },
         rules: {
           name: [
@@ -146,8 +149,8 @@
             {pattern: /(^[1-9]\d*$)/, message: "招收人数必须是数字"}],
           address: [
             {required: true, message: '地址必选'}],
-          // addressId: [
-          //   {required: , message: '地址必选'}],
+          addressId: [
+            {required: true, message: '地址必选'}],
           startTime: [
             {required: true, message: '开课时间必选'}],
           endTime: [
@@ -227,18 +230,19 @@
         });
       },
       chooseAddress() {
-        // uni.navigateTo({
-        //   url: '/pages/course/address/index'
-        // })
-		let that = this
-		uni.chooseAddress({
-				  success(res) {
-					  that.course.address = res.provinceName + res.cityName + res.countyName + res.detailInfo
-				      console.log(that.course)
-				  }
-		})
+        uni.navigateTo({
+          url: '/pages/course/address/index'
+        })
+		// let that = this
+		// uni.chooseAddress({
+		// 		  success(res) {
+		// 			  that.course.address = res.provinceName + res.cityName + res.countyName + res.detailInfo
+		// 		      console.log(that.course)
+		// 		  }
+		// })
       },
-      save() {
+      save(status) {
+		 this.course.status = status
         utils.validate(this.course, this.rules, (res, errors) => {
           if (res) {
             if (this.type === 'add') {

@@ -6,7 +6,7 @@
     <form @submit="confirm" ref="form">
       <view class="cu-form-group margin-top" @tap="chooseAddress">
         <view class="title">地址选择</view>
-        <input placeholder="必选" v-model="info.address"/>
+        <input placeholder="必选" v-model="info.address"/>	
       </view>
       <view class="cu-form-group margin-top">
         <view class="title">地址补充</view>

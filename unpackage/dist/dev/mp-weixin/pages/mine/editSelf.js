@@ -167,6 +167,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api */ 17));
 var _utils = _interopRequireDefault(__webpack_require__(/*! ../../components/form/utils */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
@@ -206,10 +209,14 @@ var _utils = _interopRequireDefault(__webpack_require__(/*! ../../components/for
 //
 //
 //
-var app = getApp();var _default = { data: function data() {return { userInfo: uni.getStorageSync('userInfo'), rules: { avatar: [{ required: true, message: '头像不能为空' }] } };}, methods: { chooseImage: function chooseImage() {var that = this;uni.chooseImage({ count: 1, sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+//
+//
+//
+var app = getApp();var _default = { data: function data() {return { userInfo: uni.getStorageSync('userInfo'), rules: { avatar: [{ required: true, message: '头像不能为空' }] } };}, methods: { chooseImage: function chooseImage(str) {if (str === 'license' && this.userInfo.status !== 'AUDITING') {uni.showToast({ title: '不可随意更改，如有疑问请咨询客服', icon: 'none' });return;}var that = this;uni.chooseImage({ count: 1, sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album'], //从相册选择
-        success: function success(res) {uni.uploadFile({ url: "".concat(app.globalData.baseUrl, "/v1/upload/image"), filePath: res.tempFilePaths[0], header: { Authorization: 'Bearer ' + uni.getStorageSync('accessToken') }, name: 'file', success: function success(res) {that.userInfo.avatar = res.data;} });} });}, edit: function edit() {var _this = this; // this.info.license = this.imgList[0]
-      _utils.default.validate(this.userInfo, this.rules, function (res, errors) {if (res) {_api.default.put("/v1/org", _this.userInfo).then(function (data) {uni.setStorageSync('userInfo', _this.userInfo);
+        success: function success(res) {uni.uploadFile({ url: "".concat(app.globalData.baseUrl, "/v1/upload/image"), filePath: res.tempFilePaths[0], header: { Authorization: 'Bearer ' + uni.getStorageSync('accessToken') }, name: 'file', success: function success(res) {that.userInfo[str] = res.data;} });} });}, edit: function edit() {var _this = this; // this.info.license = this.imgList[0]
+      _utils.default.validate(this.userInfo, this.rules, function (res, errors) {if (res) {_api.default.put("/v1/org", _this.userInfo).then(function (data) {
+            uni.setStorageSync('userInfo', _this.userInfo);
             uni.redirectTo({ url: '/pages/index/index?pageCur=mine' });
           });
         }

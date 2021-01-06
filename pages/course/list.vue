@@ -28,8 +28,8 @@
           <view>{{item.startTime}}</view>
           <view class="text-red">￥{{item.price}}</view>
         </view>
-        <view class="padding text-red" v-if="item.status === 'AUDITING'">审核中... 成功后将自动发布</view>
-        <view class="padding text-red" v-if="item.status === 'DRAFT'">{{item.auditMessage}}</view>
+     <!--   <view class="padding text-red" v-if="item.status === 'AUDITING'">审核中... 成功后将自动发布</view>
+        <view class="padding text-red" v-if="item.status === 'DRAFT'">{{item.auditMessage}}</view> -->
       </view>
     </view>
   </view>

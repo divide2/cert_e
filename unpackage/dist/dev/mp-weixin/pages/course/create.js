@@ -234,8 +234,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _utils = _interopRequireDefault(__webpack_require__(/*! ../../components/form/utils */ 18));
-var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var VForm = function VForm() {__webpack_require__.e(/*! require.ensure | components/form/VForm */ "components/form/VForm").then((function () {return resolve(__webpack_require__(/*! ../../components/form/VForm */ 111));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var _api = _interopRequireDefault(__webpack_require__(/*! @/api/api */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var VForm = function VForm() {__webpack_require__.e(/*! require.ensure | components/form/VForm */ "components/form/VForm").then((function () {return resolve(__webpack_require__(/*! ../../components/form/VForm */ 113));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 var app = getApp();var _default =
 {
@@ -252,7 +254,7 @@ var app = getApp();var _default =
         price: null, // 价格
         address: '', // 地址名字
         addressId: '', // 地址id
-        description: '无', // 课程描述
+        description: '', // 课程描述
         startTime: '', // 开始时间
         endTime: '', // 结束时间
         certificateId: '', // 证书id
@@ -262,7 +264,8 @@ var app = getApp();var _default =
         details: '', // 图文描述
         professionId: '', // 行业id
         capacity: 0,
-        professionName: '' // 行业名字
+        professionName: '', // 行业名字
+        status: '' //状态 PUBLISHED | DRAFT | FINISHED
       },
       rules: {
         name: [
@@ -276,8 +279,8 @@ var app = getApp();var _default =
         { pattern: /(^[1-9]\d*$)/, message: "招收人数必须是数字" }],
         address: [
         { required: true, message: '地址必选' }],
-        // addressId: [
-        //   {required: , message: '地址必选'}],
+        addressId: [
+        { required: true, message: '地址必选' }],
         startTime: [
         { required: true, message: '开课时间必选' }],
         endTime: [
@@ -357,18 +360,19 @@ var app = getApp();var _default =
 
     },
     chooseAddress: function chooseAddress() {
-      // uni.navigateTo({
-      //   url: '/pages/course/address/index'
-      // })
-      var that = this;
-      uni.chooseAddress({
-        success: function success(res) {
-          that.course.address = res.provinceName + res.cityName + res.countyName + res.detailInfo;
-          console.log(that.course);
-        } });
+      uni.navigateTo({
+        url: '/pages/course/address/index' });
 
+      // let that = this
+      // uni.chooseAddress({
+      // 		  success(res) {
+      // 			  that.course.address = res.provinceName + res.cityName + res.countyName + res.detailInfo
+      // 		      console.log(that.course)
+      // 		  }
+      // })
     },
-    save: function save() {var _this3 = this;
+    save: function save(status) {var _this3 = this;
+      this.course.status = status;
       _utils.default.validate(this.course, this.rules, function (res, errors) {
         if (res) {
           if (_this3.type === 'add') {

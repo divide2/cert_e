@@ -2335,9 +2335,16 @@ button.cuIcon.lg {
 	position: relative;
 	height: 60upx;
 	line-height: 60upx;
+	min-width: calc(4em + 15px);
 }
 
 .cu-form-group input {
+	flex: 1;
+	font-size: 30upx;
+	color: #555;
+	padding-right: 20upx;
+}
+.cu-form-group .append {
 	flex: 1;
 	font-size: 30upx;
 	color: #555;

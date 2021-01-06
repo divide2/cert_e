@@ -63,7 +63,7 @@
             <view class="content">
               <text class="cuIcon-exit text-grey"></text>
               <text class="text-grey">退出</text>
-            </view>
+            </view>  
           </view>
         </view>
       </view>
